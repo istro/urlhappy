@@ -22,6 +22,10 @@ class LinksController < ApplicationController
 
   end
 
+  def show
+    redirect_to "#{Link.find(params[:id]).meowbify}"
+  end
+
   def destroy
   end
 end

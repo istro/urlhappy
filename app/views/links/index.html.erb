@@ -4,15 +4,13 @@
 <% @links.each do |link|  %>
 submitted link:
 <a href=<%= link.original %>><%= link.original %></a>
-meowbified link:
-<a href=<%= link.meowbify %>><%= link.meowbify %></a>
-short link:
+     short link:
 <a href=<%= link.short %>><%= link.short %></a>
 
 <br>
 
 <%end%>
 <br>
-<p>Add a <%= link_to "new link", "links/new"%></p>
+<p>Add a <%= link_to "new link", "./new"%></p>
 
 </center>

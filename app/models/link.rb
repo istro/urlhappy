@@ -14,8 +14,8 @@ class Link < ActiveRecord::Base
   end
 
   def shorten
-
-
+    id = self.id
+    self.short = "http://localhost:3000/#{id}"
   end
 
 end
