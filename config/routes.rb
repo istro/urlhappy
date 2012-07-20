@@ -1,4 +1,8 @@
 Urlhappy::Application.routes.draw do
+  root :to => 'links#index'
+
+  resources :links
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
