@@ -1,0 +1,18 @@
+<center><h1>Here are your links:</h1>
+
+
+<% @links.each do |link|  %>
+submitted link:
+<a href=<%= link.original %>><%= link.original %></a>
+meowbified link:
+<a href=<%= link.meowbify %>><%= link.meowbify %></a>
+short link:
+<a href=<%= link.short %>><%= link.short %></a>
+
+<br>
+
+<%end%>
+<br>
+<p>Add a <%= link_to "new link", "links/new"%></p>
+
+</center>
