@@ -6,6 +6,8 @@ Urlhappy::Application.routes.draw do
 
   match '/:id' => 'links#show'
 
+  match 'links/destroy/:id' => 'links#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -4,13 +4,13 @@
 <% @links.each do |link|  %>
 submitted link:
 <a href=<%= link.original %>><%= link.original %></a>
-     short link:
-<a href=<%= link.short %>><%= link.short %></a>
-
-<br>
+    short link:
+<a href=<%= link.short %>><%= link.short %></a><br>
+<%= link_to 'delete this link', link, confirm: 'Really?', method: :delete%>
+<br><br>
 
 <%end%>
 <br>
-<p>Add a <%= link_to "new link", "./new"%></p>
+<p>Add a <%= link_to "new link", "links/new"%></p>
 
 </center>

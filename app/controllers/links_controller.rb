@@ -12,12 +12,8 @@ class LinksController < ApplicationController
       redirect_to '/links/new'
     else
       link = Link.new(:original => params[:q])
-      link.verify
-      link.meowbify
-      link.save
-      link.shorten
-      link.save
-      redirect_to '/links/'
+      link.add
+     redirect_to '/'
     end
 
   end
@@ -27,5 +23,9 @@ class LinksController < ApplicationController
   end
 
   def destroy
+    link = Link.find(params[:id])
+    link.destroy
+    redirect_to '/'
   end
+
 end

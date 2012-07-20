@@ -1,6 +1,14 @@
 class Link < ActiveRecord::Base
   attr_accessible :original, :short, :meowbify
 
+  def add
+    self.verify
+    self.meowbify
+    self.save
+    self.shorten
+    self.save
+  end
+
   def verify
     given = self.original
     normalized = given[0,7] == 'http://' ? given : 'http://'+given
@@ -15,7 +23,7 @@ class Link < ActiveRecord::Base
 
   def shorten
     id = self.id
-    self.short = "http://localhost:3000/#{id}"
+    self.short = "/#{id}"
   end
 
 end
