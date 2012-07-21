@@ -1,9 +1,7 @@
 <br>
 <center><h3>enter a link you'd like to shorten:</h3>
-<%= form_tag("/links", :method => 'post') do %>
-
-  <%= text_field_tag(:q) %>
-  <br><br>
-  <%= submit_tag("DO IT!")%>
+<%= form_for(@link) do |f| %>
+  <%= f.text_field :original %>
+  <%= f.submit 'DO IT!' %>
 <%end%>
 </center>

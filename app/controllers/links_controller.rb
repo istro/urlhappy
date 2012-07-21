@@ -4,22 +4,27 @@ class LinksController < ApplicationController
   end
 
   def new
-
+    @link = Link.new
   end
 
   def create
-    if params[:q] == ''
-      redirect_to '/links/new'
-    else
-      link = Link.new(:original => params[:q])
-      link.add
-     redirect_to '/'
-    end
+    @link = Link.new(params[:link])
 
+    if @link.save
+      redirect_to root_url
+    else
+      render 'new'
+    end
   end
 
   def show
-    redirect_to "#{Link.find(params[:id]).meowbify}"
+    @link = Link.find_by_short(params[:id])
+
+    # cookies[:visitor_id] ||= generate_new_visitor_id
+    #
+    # @link.count_click!(:visitor_id => cookies[:visitor_id])
+
+    redirect_to @link.meowbified_url
   end
 
   def destroy

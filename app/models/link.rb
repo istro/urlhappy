@@ -1,29 +1,31 @@
 class Link < ActiveRecord::Base
   attr_accessible :original, :short, :meowbify
 
-  def add
-    self.verify
-    self.meowbify
-    self.save
-    self.shorten
-    self.save
+  before_create :append_http
+  before_create :shorten
+
+  validates :original, :presence => true
+
+  def meowbified_url
+    "http://cat.%s.meowbify.com" % self.original[7..-1]
   end
 
-  def verify
-    given = self.original
-    normalized = given[0,7] == 'http://' ? given : 'http://'+given
-    self.original = normalized
+  def to_param
+    self.short
   end
 
-  def meowbify
-    bare = self.original[7, self.original.length]
-    meowbified = 'http://cat.' + bare + '.meowbify.com'
-    self.meowbify = meowbified
+  private
+  def append_http
+    self.original = "http://#{self.original}" unless self.original =~ /^http:\/\//
   end
 
   def shorten
-    id = self.id
-    self.short = "/#{id}"
-  end
+    record = true
 
+    while record
+      chars = ('a'..'z').to_a + ('0'..'9').to_a
+      self.short = (1..6).inject('') { |str, i| str << chars[rand(chars.length)] }
+      record = Link.find_by_short(self.short)
+    end
+  end
 end
