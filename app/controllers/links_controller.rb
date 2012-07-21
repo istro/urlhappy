@@ -26,7 +26,7 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    link = Link.find(params[:id])
+    link = Link.find_by_short(params[:id])
     link.destroy
     redirect_to '/'
   end

@@ -1,10 +1,12 @@
 class Link < ActiveRecord::Base
-  attr_accessible :original, :short, :vanity
+  attr_accessible :original, :short, :vanity, :clicks
 
   before_create :append_http
   before_create :shorten
 
   validates :original, :presence => true
+
+
 
   def meowbified_url
     "http://cat.%s.meowbify.com" % self.original[7..-1]
@@ -15,7 +17,8 @@ class Link < ActiveRecord::Base
   end
 
   def count_clicks
-
+    self.clicks += 1
+    self.save
   end
 
   private

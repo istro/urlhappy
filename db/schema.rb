@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20120721011135) do
     t.string   "original"
     t.string   "short"
     t.string   "vanity"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "clicks"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "clicks",     :default => 0
   end
 
 end
