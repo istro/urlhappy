@@ -20,9 +20,7 @@ class LinksController < ApplicationController
   def show
     @link = Link.find_by_short(params[:id])
 
-    # cookies[:visitor_id] ||= generate_new_visitor_id
-    #
-    # @link.count_click!(:visitor_id => cookies[:visitor_id])
+    @link.count_clicks
 
     redirect_to @link.meowbified_url
   end

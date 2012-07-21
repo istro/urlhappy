@@ -3,7 +3,7 @@ class CreateLinks < ActiveRecord::Migration
     create_table :links do |t|
       t.string :original
       t.string :short
-      t.string :meowbify
+      t.string :vanity
 
       t.timestamps
     end

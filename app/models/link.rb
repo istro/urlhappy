@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  attr_accessible :original, :short, :meowbify
+  attr_accessible :original, :short, :vanity
 
   before_create :append_http
   before_create :shorten
@@ -12,6 +12,10 @@ class Link < ActiveRecord::Base
 
   def to_param
     self.short
+  end
+
+  def count_clicks
+
   end
 
   private

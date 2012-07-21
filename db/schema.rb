@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720195941) do
+ActiveRecord::Schema.define(:version => 20120721011135) do
 
   create_table "links", :force => true do |t|
     t.string   "original"
     t.string   "short"
-    t.string   "meowbify"
+    t.string   "vanity"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "clicks"
   end
 
 end
