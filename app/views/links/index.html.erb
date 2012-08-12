@@ -6,7 +6,7 @@ submitted link:
 <a href=<%= link.original %>><%= link.original %></a>
     short link:
 <%= link_to "#{root_url}#{link.short}", link.short %> (clicked <%="#{link.clicks}"%> times)</a><br>
-<%= link_to 'delete this link', link, confirm: 'Really?', method: :delete%>
+<%= link_to 'delete this link', link, confirm: 'Are you sure you want to delete it?', method: :delete%>
 <br><br>
 
 <%end%>
